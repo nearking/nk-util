@@ -1,0 +1,42 @@
+// 文本相关的样式
+
+// 字体大小10~16，大小间隔1px
+.nk-text-small(@min: 10, @max: 16) when (@min <=@max) {
+    .nk-text-@{min} {
+        font-size: @min * 1px;
+    }
+
+    .nk-text-small(@min+1, @max);
+}
+
+// 字体大小18~32，大小间隔2px
+.nk-text-normal(@min: 18, @max: 32) when (@min <=@max) {
+    .nk-text-@{min} {
+        font-size: @min * 1px;
+    }
+
+    .nk-text-normal(@min+2, @max);
+}
+
+.nk-text-small();
+.nk-text-normal();
+
+
+// 一行显示，超出一行，显示...
+.nk-text-line {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.nk-text-center {
+    text-align: center !important;
+}
+
+.nk-text-left {
+    text-align: left !important;
+}
+
+.nk-text-right {
+    text-align: right !important;
+}

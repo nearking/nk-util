@@ -1,0 +1,42 @@
+/////////////////////////////////////////////
+// 容器相关的样式
+
+.nk-box {
+    width: 100%;
+    display: inline-block;
+    position: relative;
+}
+
+.nk-panel {
+    width: 100%;
+    position: relative;
+}
+
+.nk-img-box {
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+// 布局相关
+.nk-flex {
+    display: flex;
+}
+
+.nk-flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.nk-col(@min: 1, @max: 5) when (@min <=@max) {
+    .nk-col-@{min} {
+        -webkit-box-flex: @min;
+        box-flex: @min;
+        flex: @min;
+        min-width: 0; // 防止flex布局和white-space: nowrap;冲突
+    }
+
+    .nk-col(@min+1, @max);
+}
+
+.nk-col();

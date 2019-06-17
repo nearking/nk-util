@@ -1,0 +1,62 @@
+iframe {
+  border: none;
+}
+.nk-text-10 {
+  font-size: 10px;
+}
+.nk-text-11 {
+  font-size: 11px;
+}
+.nk-text-12 {
+  font-size: 12px;
+}
+.nk-text-13 {
+  font-size: 13px;
+}
+.nk-text-14 {
+  font-size: 14px;
+}
+.nk-text-15 {
+  font-size: 15px;
+}
+.nk-text-16 {
+  font-size: 16px;
+}
+.nk-text-18 {
+  font-size: 18px;
+}
+.nk-text-20 {
+  font-size: 20px;
+}
+.nk-text-22 {
+  font-size: 22px;
+}
+.nk-text-24 {
+  font-size: 24px;
+}
+.nk-text-26 {
+  font-size: 26px;
+}
+.nk-text-28 {
+  font-size: 28px;
+}
+.nk-text-30 {
+  font-size: 30px;
+}
+.nk-text-32 {
+  font-size: 32px;
+}
+.nk-text-line {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.nk-text-center {
+  text-align: center !important;
+}
+.nk-text-left {
+  text-align: left !important;
+}
+.nk-text-right {
+  text-align: right !important;
+}
