@@ -1,0 +1,27 @@
+.nk-pulgin-datetime {
+    width: 100%;
+    max-width: 640px;
+    margin: auto;
+}
+
+.nk-pulgin-datetime>.layui-laydate-static {
+    width: 100%;
+}
+
+.nk-pulgin-datetime .layui-laydate-main {
+    width: 100%;
+}
+
+.nk-pulgin-datetime .layui-laydate-footer {
+    width: 100%;
+}
+
+.nk-pulgin-datetime table {
+    width: 100%;
+}
+
+.nk-pulgin-datetime .layui-laydate-content td,
+.nk-pulgin-datetime .layui-laydate-content th {
+    width: 14.28%;
+    /* 1/7 */
+}

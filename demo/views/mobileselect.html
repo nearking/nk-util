@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>选择器-mobileSelect</title>
+
+    <!-- mobileselect -->
+    <link rel="stylesheet" href="/mobileselect/mobileselect.css">
+    <script src="/mobileselect/mobileselect.js"></script>
+    <!-- layer -->
+    <script src="/layer_mobile/2.0/layer.js"></script>
+    <!-- layDate -->
+    <link rel="stylesheet" href="/laydate/5.0.9/theme/default/laydate.css">
+    <script src="/laydate/5.0.9/laydate.js"></script>
+
+    <!-- 自定义扩展 -->
+    <link rel="stylesheet" href="/pulgins/datetimeselect/datetimeselect.css">
+    <script src="/pulgins/datetimeselect/datetimeselect.js"></script>
+
+    <style>
+        .m-box {
+            padding: 4px 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>选择器-mobileSelect</h1>
+
+    <div id="test1" class="m-box">Picker</div>
+
+    <div onclick="nkutil.datetimeselect()" class="m-box">日期选择</div>
+    <script>
+        var mobileselect1 = new MobileSelect({
+            'trigger': '#test1',
+            'title': '选择器',
+            'wheels': [
+                { data: ['周日', '周一', '周二', '周三', '周四', '周五', '周六'] }
+            ],
+            position: [2] //Initialize positioning
+        })
+
+        var showDatePicker = function () {
+            var id = 'datetime' + new Date().getTime();
+            layer.open({
+                type: 1
+                , content: '<div id="' + id + '"></div>'
+                , anim: 'up'
+                , style: 'position:fixed; bottom:0; left:0; width: 100%; border:none;'
+                , success: function () {
+                    laydate.render({
+                        elem: '#' + id
+                        , position: 'static'
+                    });
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>
