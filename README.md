@@ -2,6 +2,16 @@
 
 > CSS样式工具类，该项目用于收集日常使用的常用工具样式
 
+### 项目结构
+```
+- build 经过打包编译的资源
+- demo 示例文件
+- extra 好用的插件
+- src nkutil的源码
+    - pulgins 插件扩展，包括了JS以及CSS文件
+    - style 样式扩展，一些基础的样式类
+    - node_pulgins node扩展的插件
+```
 
 ### CSS命名规范
 ##### 组织规范

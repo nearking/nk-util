@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>datetimeselect</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            padding: 0;
+            margin: 0;
+            font-family: "Open Sans", "Clear Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            color: rgb(51, 51, 51);
+            line-height: 1.6;
+        }
+
+        .m-doc-page {
+            width: 100%;
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 30px 30px 100px 30px;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        h5,
+        h6 {
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .m-doc-page h1 {
+            padding-bottom: 0.3em;
+            font-size: 2.25em;
+            line-height: 1.2;
+            border-bottom: 1px solid rgb(228, 228, 228);
+        }
+
+        .m-doc-page h2 {
+            font-size: 1.8em;
+            line-height: 1.4;
+        }
+
+        .m-doc-page h3 {
+            font-size: 1.5em;
+            line-height: 1.4;
+        }
+
+        .m-doc-page h4 {
+            font-size: 1.25em;
+            line-height: 1.4;
+        }
+
+        .m-doc-page h5 {
+            font-size: 1em;
+            line-height: 1.4;
+        }
+
+        .m-doc-page p {
+            margin: 0;
+            padding: 8px;
+        }
+
+        .m-doc-page blockquote>p {
+            padding: 0px;
+        }
+
+        .m-doc-page blockquote {
+            margin: 0;
+            padding: 8px 8px 8px 24px;
+            border-left: 3px solid sienna;
+        }
+
+        .m-doc-page pre {
+            white-space: pre-wrap;
+            font-size: 0.9em;
+            word-wrap: break-word;
+            word-break: normal;
+            font-family: "Open Sans", "Clear Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            background: #F7F7F7;
+            border-radius: 5px;
+            border: 1px solid #e1e1f1;
+            padding: 8px 16px;
+        }
+
+        .m-doc-page tt,
+        .m-doc-page code,
+        .m-doc-page kbd,
+        .m-doc-page samp {
+            font-family: "Open Sans", "Clear Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+
+        .m-doc-page ul,
+        .m-doc-page ol {
+            /* margin: 0.8em 0px; */
+            margin: 0;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .m-doc-page table {
+            border-collapse: collapse;
+            border-spacing: 0px;
+            width: 100%;
+            margin: 0.8em 0;
+        }
+
+        .m-doc-page thead {
+            background-color: rgb(218, 218, 218);
+        }
+
+        .m-doc-page table tr:nth-child(2n) {
+            background-color: rgb(248, 248, 248);
+        }
+
+        .m-doc-page tr {
+            border-top: 1px solid rgb(201, 201, 201);
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .m-doc-page tr th {
+            font-weight: bold;
+            border-width: 1px 1px 0px 1px;
+            border-top-style: solid;
+            border-right-style: solid;
+            border-left-style: solid;
+            border-top-color: rgb(201, 201, 201);
+            border-right-color: rgb(201, 201, 201);
+            border-left-color: rgb(201, 201, 201);
+            border-image: initial;
+            border-bottom-style: initial;
+            border-bottom-color: initial;
+            padding: 6px 12px;
+        }
+
+        .m-doc-page tr td {
+            border: 1px solid rgb(201, 201, 201);
+            margin: 0px;
+            padding: 6px 12px;
+        }
+    </style>
+
+    <!-- 原风格 - 太丑了 -->
+    <!-- <link rel="stylesheet" href="https://cdn.bootcss.com/prettify/r298/prettify.min.css"> -->
+    <!-- 深色系 -黑橙色 -sumline 风格 -->
+    <!-- <link rel="stylesheet" href="http://114.55.91.52:23410/res/code-prettify/sunburst.css"> -->
+    <!-- 深色系 - 黑黄 -->
+    <link rel="stylesheet" href="http://114.55.91.52:23410/res/code-prettify/desert.css">
+    <!-- 深色系 - 黑紫 -->
+    <!-- <link rel="stylesheet" href="http://114.55.91.52:23410/res/code-prettify/doxy.css"> -->
+    <!-- 浅色系 -->
+    <!-- <link rel="stylesheet" href="http://114.55.91.52:23410/res/code-prettify/sons-of-obsidian.css"> -->
+
+
+    <script src="https://cdn.bootcss.com/prettify/r298/prettify.min.js"></script>
+    <script src="https://cdn.bootcss.com/prettify/r298/lang-css.min.js"></script>
+    <script src="https://cdn.bootcss.com/prettify/r298/lang-basic.min.js"></script>
+    <script src="https://cdn.bootcss.com/prettify/r298/lang-tex.min.js"></script>
+    <script src="https://cdn.bootcss.com/prettify/r298/lang-yaml.min.js"></script>
+
+
+</head>
+
+<body onload="initPrettyCode()">
+    <div class="m-doc-page">
+        <h1>datetimeselect 日期时间选择器（日历模式）</h1>
+<h3>配置参数</h3>
+<ul>
+<li>
+<h5>type {string} 控件选择类型</h5>
+</li>
+</ul>
+<p>默认值为 date</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">可选参数</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">year</td>
+<td style="text-align:center">只提供年列表选择</td>
+</tr>
+<tr>
+<td style="text-align:center">month</td>
+<td style="text-align:center">只提供年、月选择</td>
+</tr>
+<tr>
+<td style="text-align:center">date</td>
+<td style="text-align:center">可选择：年、月、日。type默认值，一般可不填</td>
+</tr>
+<tr>
+<td style="text-align:center">time</td>
+<td style="text-align:center">只提供时、分、秒选择</td>
+</tr>
+<tr>
+<td style="text-align:center">datetime</td>
+<td style="text-align:center">可选择：年、月、日、时、分、秒</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<h5>format {string} 自定义格式</h5>
+</li>
+</ul>
+<p>默认格式为 yyyy-MM-dd<br />
+完整格式为 yyyy-MM-dd HH:mm:ss</p>
+<ul>
+<li>
+<h5>value {string | object} 初始值</h5>
+</li>
+</ul>
+<p>支持传入符合format参数设定的日期格式字符，或者 new Date()</p>
+<ul>
+<li>
+<h5>min {string} 最小范围内的日期时间值</h5>
+</li>
+<li>
+<h5>max {string} 最大范围内的日期时间值</h5>
+</li>
+<li>
+<h5>lang {string} 语言</h5>
+</li>
+</ul>
+<p>支持 cn（中文版）、en（国际版，即英文版）</p>
+<ul>
+<li>
+<h5>calendar {boolean} 是否显示公历节日</h5>
+</li>
+</ul>
+<p>默认为false</p>
+<ul>
+<li>
+<h5>mark {object} 标注重要日子</h5>
+</li>
+</ul>
+<p>参考layDate的官方说明<br />
+例如：{'0-0-15': '中旬'}</p>
+<ul>
+<li>
+<h5>ready {function} 控件初始打开的回调</h5>
+</li>
+</ul>
+<p>控件在打开时触发，回调返回一个参数：初始的日期时间对象</p>
+<pre><code class="lang-text">{
+ready: function(date){}
+}
+</code></pre>
+<ul>
+<li>
+<h5>change {function} 日期时间被切换后的回调</h5>
+</li>
+</ul>
+<p>年月日时间被切换时都会触发。回调返回三个参数，分别代表：生成的值、日期时间对象、结束的日期时间对象</p>
+<pre><code>{
+change: function(value, date, endDate){}
+}
+</code></pre>
+<ul>
+<li>
+<h5>done {function} 控件选择完毕后的回调</h5>
+</li>
+</ul>
+<p>点击日期、清空、现在、确定均会触发。回调返回三个参数，分别代表：生成的值、日期时间对象、结束的日期时间对象</p>
+<pre><code>{
+done: function(value, date, endDate){}
+}
+</code></pre>
+    </div>
+
+    <script>
+        function initPrettyCode() {
+            var pre = document.getElementsByTagName('pre') || [];
+            for (var i = 0; i < pre.length; i++) {
+                var item = pre[i];
+                item.className += (item.className || '') + ' prettyprint';
+            }
+
+            prettyPrint()
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{title || '文档'}}</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            padding: 0;
+            margin: 0;
+            font-family: "Open Sans", "Clear Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            color: rgb(51, 51, 51);
+            line-height: 1.6;
+        }
+
+        .m-doc-page {
+            width: 100%;
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 30px 30px 100px 30px;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        h5,
+        h6 {
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .m-doc-page h1 {
+            padding-bottom: 0.3em;
+            font-size: 2.25em;
+            line-height: 1.2;
+            border-bottom: 1px solid rgb(228, 228, 228);
+        }
+
+        .m-doc-page h2 {
+            font-size: 1.8em;
+            line-height: 1.4;
+        }
+
+        .m-doc-page h3 {
+            font-size: 1.5em;
+            line-height: 1.4;
+        }
+
+        .m-doc-page h4 {
+            font-size: 1.25em;
+            line-height: 1.4;
+        }
+
+        .m-doc-page h5 {
+            font-size: 1em;
+            line-height: 1.4;
+        }
+
+        .m-doc-page p {
+            margin: 0;
+            padding: 8px;
+        }
+
+        .m-doc-page blockquote>p {
+            padding: 0px;
+        }
+
+        .m-doc-page blockquote {
+            margin: 0;
+            padding: 8px 8px 8px 24px;
+            border-left: 3px solid sienna;
+        }
+
+        .m-doc-page pre {
+            white-space: pre-wrap;
+            font-size: 0.9em;
+            word-wrap: break-word;
+            word-break: normal;
+            font-family: "Open Sans", "Clear Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            background: #F7F7F7;
+            border-radius: 5px;
+            border: 1px solid #e1e1f1;
+            padding: 8px 16px;
+        }
+
+        .m-doc-page tt,
+        .m-doc-page code,
+        .m-doc-page kbd,
+        .m-doc-page samp {
+            font-family: "Open Sans", "Clear Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+
+        .m-doc-page ul,
+        .m-doc-page ol {
+            /* margin: 0.8em 0px; */
+            margin: 0;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .m-doc-page table {
+            border-collapse: collapse;
+            border-spacing: 0px;
+            width: 100%;
+            margin: 0.8em 0;
+        }
+
+        .m-doc-page thead {
+            background-color: rgb(218, 218, 218);
+        }
+
+        .m-doc-page table tr:nth-child(2n) {
+            background-color: rgb(248, 248, 248);
+        }
+
+        .m-doc-page tr {
+            border-top: 1px solid rgb(201, 201, 201);
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .m-doc-page tr th {
+            font-weight: bold;
+            border-width: 1px 1px 0px 1px;
+            border-top-style: solid;
+            border-right-style: solid;
+            border-left-style: solid;
+            border-top-color: rgb(201, 201, 201);
+            border-right-color: rgb(201, 201, 201);
+            border-left-color: rgb(201, 201, 201);
+            border-image: initial;
+            border-bottom-style: initial;
+            border-bottom-color: initial;
+            padding: 6px 12px;
+        }
+
+        .m-doc-page tr td {
+            border: 1px solid rgb(201, 201, 201);
+            margin: 0px;
+            padding: 6px 12px;
+        }
+    </style>
+
+    <!-- 原风格 - 太丑了 -->
+    <!-- <link rel="stylesheet" href="https://cdn.bootcss.com/prettify/r298/prettify.min.css"> -->
+    <!-- 深色系 -黑橙色 -sumline 风格 -->
+    <!-- <link rel="stylesheet" href="http://114.55.91.52:23410/res/code-prettify/sunburst.css"> -->
+    <!-- 深色系 - 黑黄 -->
+    <link rel="stylesheet" href="http://114.55.91.52:23410/res/code-prettify/desert.css">
+    <!-- 深色系 - 黑紫 -->
+    <!-- <link rel="stylesheet" href="http://114.55.91.52:23410/res/code-prettify/doxy.css"> -->
+    <!-- 浅色系 -->
+    <!-- <link rel="stylesheet" href="http://114.55.91.52:23410/res/code-prettify/sons-of-obsidian.css"> -->
+
+
+    <script src="https://cdn.bootcss.com/prettify/r298/prettify.min.js"></script>
+    <script src="https://cdn.bootcss.com/prettify/r298/lang-css.min.js"></script>
+    <script src="https://cdn.bootcss.com/prettify/r298/lang-basic.min.js"></script>
+    <script src="https://cdn.bootcss.com/prettify/r298/lang-tex.min.js"></script>
+    <script src="https://cdn.bootcss.com/prettify/r298/lang-yaml.min.js"></script>
+
+
+</head>
+
+<body onload="initPrettyCode()">
+    <div class="m-doc-page">
+        {{@ doc}}
+    </div>
+
+    <script>
+        function initPrettyCode() {
+            var pre = document.getElementsByTagName('pre') || [];
+            for (var i = 0; i < pre.length; i++) {
+                var item = pre[i];
+                item.className += (item.className || '') + ' prettyprint';
+            }
+
+            prettyPrint()
+        }
+    </script>
+</body>
+
+</html>

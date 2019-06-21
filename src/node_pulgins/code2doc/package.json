@@ -1,0 +1,21 @@
+{
+  "name": "code2doc",
+  "version": "1.0.0",
+  "description": "code api doc",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "node.js",
+    "code",
+    "api",
+    "doc"
+  ],
+  "author": "Near.Li",
+  "license": "MIT",
+  "dependencies": {
+    "art-template": "^4.13.2",
+    "dox": "^0.9.0"
+  }
+}
