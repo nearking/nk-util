@@ -16,6 +16,7 @@
   "license": "MIT",
   "dependencies": {
     "art-template": "^4.13.2",
-    "dox": "^0.9.0"
+    "dox": "^0.9.0",
+    "nk-util-node": "file:nk-util-node-1.0.0.tgz"
   }
 }

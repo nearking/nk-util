@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{title || '文档'}}</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            padding: 0;
+            margin: 0;
+            font-family: "Open Sans", "Clear Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            color: rgb(51, 51, 51);
+            line-height: 1.6;
+        }
+
+        .m-click {
+            text-decoration-color: coral;
+            text-decoration: underline;
+            color: coral;
+            cursor: pointer;
+        }
+
+        .m-click:hover {
+            color: brown;
+        }
+
+        .m-flex {
+            display: flex;
+            display: -webkit-flex;
+        }
+
+        .m-flex-1 {
+            flex: 1;
+            -webkit-box-flex: 1;
+            box-flex: 1;
+            flex: 1;
+            min-width: 0;
+        }
+
+        .m-flex-2 {
+            flex: 2;
+            -webkit-box-flex: 2;
+            box-flex: 2;
+            flex: 2;
+            min-width: 0;
+        }
+
+        .m-doc-page {
+            width: 100%;
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 30px 30px 100px 30px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="m-flex" style="height: 100%;">
+        <!-- 左侧栏 -->
+        <div style="width: 320px;height: 100%;background-color: #f1f1f1;padding: 10px;">
+            <h1>{{title || '文档'}}</h1>
+            {{if indexList && indexList.length>0}}
+            <ul>
+                {{each indexList item}}
+                <li m-link='{{item.indexDir + "?" + ver}}' class="m-click">
+                    <!-- <a href="{{item.indexDir}}">{{item.title+' [' + item.indexTitle + ']'}}</a> -->
+                    <span>{{item.title}}</span>
+                    <span style="font-size: 13px;">{{'[' + item.indexTitle + ']'}}</span>
+                </li>
+                {{/each}}
+            </ul>
+            {{/if}}
+        </div>
+        <!-- 主体 -->
+        <div class="m-flex-1" style="height: 100%;overflow: hidden;">
+            <iframe id="m_doc" src="" frameborder="0" style="width: 100%;height: 100%;"></iframe>
+        </div>
+        <!-- 右侧栏 -->
+        <!-- <div style="width: 320px;height: 100%;"></div> -->
+    </div>
+
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var frame = $('#m_doc');
+
+            $.each($('[m-link]'), function (index, item) {
+                var $item = $(item);
+                item.onclick = function () {
+                    frame.attr('src', $item.attr('m-link'));
+                }
+            });
+        })
+    </script>
+</body>
+
+</html>
